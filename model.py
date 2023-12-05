@@ -11,9 +11,11 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
     
 
-def encode_df(df):
+def encode_df(df,target):
     '''
     Takes a processed dataframe and encodes the object columns for usage in modeling.
+    
+    Takes a dataframe and a target variable (assuming the target variable is an object). Target variable keeps the thing the model is being trained on from splitting and altering it.
     
     !!! MAKE ME MORE DYNAMIC !!!
     - Add functionality to check if passed a list or dataframe
@@ -25,6 +27,9 @@ def encode_df(df):
     # Get the object columns from the dataframe
     obj_col = [col for col in df.columns if df[col].dtype == 'O']
     
+    # remove target variable
+    obj_col.remove(target)
+    
     # Begin encoding the object columns
     for col in obj_col:
         # Grab current column dummies
@@ -35,10 +40,10 @@ def encode_df(df):
 
         # add these new columns to the dataframe
         for column in dummies.columns:
-            df[column] = dummies[column]
+            df[column] = dummies[column].astype(float)
         
         # Drop the old columns from the dataframe
         df = df.drop(columns=col)
     
-    return df.astype(float)
+    return df
     
