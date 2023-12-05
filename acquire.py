@@ -47,11 +47,11 @@ def print_libs():
         'from scipy import stats',
         'from pydataset import data',
         'import os',
+        'import warnings',
+        'from sklearn import metrics',
         'from sklearn.impute import SimpleImputer',
         'from sklearn.model_selection import train_test_split',
         'from sklearn.tree import DecisionTreeClassifier, plot_tree',
-        'from sklearn import metrics',
-        'import warnings',
         'from sklearn.neighbors import KNeighborsClassifier',
         'from sklearn.ensemble import RandomForestClassifier',
         'from sklearn.linear_model import LogisticRegression'

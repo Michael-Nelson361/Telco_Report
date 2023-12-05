@@ -175,20 +175,20 @@ def test_hypothesis(p,
     '''
     if tails == 'two':
         if p < alpha:
-            print(f'We reject the null hypothesis.\nOur p-value is {p} \nOur statistic value is {stat}')
+            print(f'We reject the null hypothesis.\n Our p-value is {p} \n Our statistic value is {stat}')
         else:
-            print(f'We fail to reject the null hypothesis.\nOur p-value is {p}.\nOur statistic is {stat}')
+            print(f'We fail to reject the null hypothesis.\n Our p-value is {p}.\n Our statistic is {stat}')
     else:
         if direction == 'greater':
             if ((p/2) < alpha) and (stat > 0):
-                print(f'We reject our null hypothesis.\nOur p-value is {p} \nOur statistic value is {stat}')
+                print(f'We reject our null hypothesis.\n Our p-value is {p} \n Our statistic value is {stat}')
             else:
-                print(f'We fail to reject the null hypothesis.\nOur p-value is {p}.\nOur statistic is {stat}')
+                print(f'We fail to reject the null hypothesis.\n Our p-value is {p}.\n Our statistic is {stat}')
         else:
             if ((p/2) < alpha) and (stat < 0):
-                print(f'We reject our null hypothesis.\nOur p-value is {p} \nOur statistic value is {stat}')
+                print(f'We reject our null hypothesis.\n Our p-value is {p} \n Our statistic value is {stat}')
             else:
-                print(f'We fail to reject the null hypothesis.\nOur p-value is {p}.\nOur statistic is {stat}')
+                print(f'We fail to reject the null hypothesis.\n Our p-value is {p}.\n Our statistic is {stat}')
     
 def drop_cols(df,cols=[],extras=False,degree=6):
     '''
