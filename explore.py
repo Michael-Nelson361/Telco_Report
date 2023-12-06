@@ -69,30 +69,41 @@ def month_charges_churn(df):
     '''
     Function to compare churn against monthly charges. Takes a dataframe and returns nothing.
     '''
-    
-    sns.histplot(data=df,x='monthly_charges',hue='churn',kde=True,multiple='stack',alpha=0.5,line_kws={'lw':2,'ls':'-.'})
-    plt.title('Distribution of Monthly Charges in Relation to Churn')
-    plt.grid(alpha=0.4)
+
+    sns.displot(
+        data=df,
+        x='monthly_charges',
+        hue='churn',
+        kde=True,
+        multiple='stack',
+        alpha=0.5,
+        line_kws={'lw':2,'ls':'-.'},
+        kind='hist',
+        col='contract_type'
+    )
+    plt.suptitle('Distribution of Monthly Charges in Relation to Churn')
+    plt.subplots_adjust(top=0.9)
+    # plt.grid(alpha=0.4)
     plt.show()
-    
+
     # test normal distribution
     stat,p = stats.shapiro(df.monthly_charges)
     print('Running Shapiro test for normalcy:')
     print('H_0: Monthly charges is distributed normally.')
     print('H_a: Monthly charges is not distributed normally.\n')
     test_hypothesis(p,stat)
-    
+
     if p < 0.05:
         print()
         print('Running Mann-Whitney means test:')
         print('H_0: There is no difference between the monthly charges of customers who have churned and those who have not.')
         print('H_a: There is a difference between the monthly charges of customers who have churned and those who have not.\n')
-        
+
         stat, p = stats.mannwhitneyu(
             df[df.churn == 'Yes'].monthly_charges,
             df[df.churn == 'No'].monthly_charges
         )
-        
+
         test_hypothesis(p,stat)
     else:
         print()
@@ -206,30 +217,41 @@ def month_charges_churn(df):
     '''
     Function to compare churn against monthly charges. Takes a dataframe and returns nothing.
     '''
-    
-    sns.histplot(data=df,x='monthly_charges',hue='churn',kde=True,multiple='stack',alpha=0.5,line_kws={'lw':2,'ls':'-.'})
-    plt.title('Distribution of Monthly Charges in Relation to Churn')
-    plt.grid(alpha=0.4)
+
+    sns.displot(
+        data=df,
+        x='monthly_charges',
+        hue='churn',
+        kde=True,
+        multiple='stack',
+        alpha=0.5,
+        line_kws={'lw':2,'ls':'-.'},
+        kind='hist',
+        col='contract_type'
+    )
+    plt.suptitle('Distribution of Monthly Charges in Relation to Churn')
+    plt.subplots_adjust(top=0.9)
+    # plt.grid(alpha=0.4)
     plt.show()
-    
+
     # test normal distribution
     stat,p = stats.shapiro(df.monthly_charges)
     print('Running Shapiro test for normalcy:')
     print('H_0: Monthly charges is distributed normally.')
     print('H_a: Monthly charges is not distributed normally.\n')
     test_hypothesis(p,stat)
-    
+
     if p < 0.05:
         print()
         print('Running Mann-Whitney means test:')
         print('H_0: There is no difference between the monthly charges of customers who have churned and those who have not.')
         print('H_a: There is a difference between the monthly charges of customers who have churned and those who have not.\n')
-        
+
         stat, p = stats.mannwhitneyu(
             df[df.churn == 'Yes'].monthly_charges,
             df[df.churn == 'No'].monthly_charges
         )
-        
+
         test_hypothesis(p,stat)
     else:
         print()
