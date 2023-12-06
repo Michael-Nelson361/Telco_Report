@@ -72,7 +72,7 @@ The telecommunications enterprise Telco faces a significant challenge with custo
 2. If you have access to the Codeup MySQL DB:
     - Save env.py in the repository with user, password, and host variables.
     - Ensure the env.py has the appropriate database connection.
-    - RandomState 123 is predefined in the functions
+    - random_state of 123 is predefined in the functions
     - Run the notebook.
 3. If you don't have access:
     - Request access from Codeup.
@@ -81,7 +81,10 @@ The telecommunications enterprise Telco faces a significant challenge with custo
 Notes: With the exception of acquire.py and env.py, all the .py files can be rebuilt from the contents of their respective notebooks.
 
 ## Key Findings
+- Monthly charges play a significant role in whether a customer will churn or not.
+- There is a greater proportion of churn from customers with internet as opposed to those without internet.
+- Monthly customers churn most from fiber optic internet.
 
 ### Recommendations
-
-### Takeaways
+- Offer more deals to bring monthly charges down for month-to-month contract types
+- Explore any potential issues with the fiber optic service that may result in greater churn.
