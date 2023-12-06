@@ -45,7 +45,7 @@ def encode_df(df,target):
         # Drop the old columns from the dataframe
         df = df.drop(columns=col)
     
-    return df
+    return df    
     
 
 def Xy_sets(tvt_set,target):
@@ -262,6 +262,34 @@ def lr_modeling(X_set,y_set,n_models=20,r_parameter=123,plot=False):
         plt.show()
     
     return lr_metrics
+
+
+def metrics_filter(metric_df,y_train):
+    '''
+    Function to filter and select only the best models of the given algorithm.
+    
+    Accepts a dataframe of a metric and returns the dataframe limited to only the best three models.
+    '''
+    # get baseline
+    baseline_acc = (y_train.mode()[0] == y_train).mean()
+    # print(f'baseline: {baseline_acc}')
+    
+    # drop anything below baseline
+    metric_df = metric_df[metric_df.validate_acc > baseline_acc]
+
+    # drop anything with a difference bigger than 0.1
+    # print(f'diff mean: {metric_df.difference.mean()}')
+    metric_df = metric_df[metric_df.difference < metric_df.difference.mean()]
+
+    # drop anything with an average less than average rounded to 1 decimal
+    # print(f'avg mean: {metric_df.average.mean()}')
+    metric_df = metric_df[metric_df.average >= metric_df.average.mean()]
+
+    # drop rows that are less than or equal to the validate mean
+    # print(f'val mean: {metric_df.validate_acc.mean()}')
+    metric_df = metric_df[metric_df.validate_acc > metric_df.validate_acc.mean()]
+
+    return metric_df.sort_values(['difference','validate_acc','train_acc'],ascending=[True,False,False])[:]
 
 
 def final_models(models,val_cutoff=0.8,avg_cutoff=0.8):

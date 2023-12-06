@@ -154,42 +154,6 @@ def split_df(df,strat_var,seed=123):
     return train, validate, test
     
 
-# Function to return whether answer on rejecting or failing to reject null hypothesis
-def test_hypothesis(p, 
-                    stat, 
-                    tails='two', 
-                    direction='greater',
-                    alpha=0.05):
-    '''
-    test_hypothesis will take in a p value and a test statistic
-    if p is less than a presumed alpha, then we  will reject
-    our null hypothesis
-    
-    this takes in two positional arguments,
-    p stat, a float value representing the probability of serendipity
-    stat, a float value representing the test statistic
-    
-    with the keyword arguments f tails, direction, and alpha,
-    the operator is able to change the control structrure in order
-    to perform a one-tailed ttest if so desired
-    '''
-    if tails == 'two':
-        if p < alpha:
-            print(f'We reject the null hypothesis.\n Our p-value is {p} \n Our statistic value is {stat}')
-        else:
-            print(f'We fail to reject the null hypothesis.\n Our p-value is {p}.\n Our statistic is {stat}')
-    else:
-        if direction == 'greater':
-            if ((p/2) < alpha) and (stat > 0):
-                print(f'We reject our null hypothesis.\n Our p-value is {p} \n Our statistic value is {stat}')
-            else:
-                print(f'We fail to reject the null hypothesis.\n Our p-value is {p}.\n Our statistic is {stat}')
-        else:
-            if ((p/2) < alpha) and (stat < 0):
-                print(f'We reject our null hypothesis.\n Our p-value is {p} \n Our statistic value is {stat}')
-            else:
-                print(f'We fail to reject the null hypothesis.\n Our p-value is {p}.\n Our statistic is {stat}')
-    
 def drop_cols(df,cols=[],extras=False,degree=6):
     '''
     Drops columns. If no columns provided, then returns dataframe as is.

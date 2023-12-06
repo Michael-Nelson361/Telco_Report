@@ -105,3 +105,31 @@ def get_telco_data():
     
     return telco_churn
 
+
+# Function to load telco dataset
+def get_telco_data():
+    """
+    Function takes no arguments and returns a DataFrame containing the data from telco_churn database.
+    
+    This function requires an env file to be existent.
+    """
+    url = env.get_db_url('telco_churn')
+    
+    query = """
+            select *
+            from customers
+            left join contract_types
+                using(contract_type_id)
+            left join internet_service_types
+                using(internet_service_type_id)
+            left join payment_types
+                using(payment_type_id)
+        """
+    
+    filename = 'telco.csv'
+    
+    # Import database
+    telco_churn = check_file_exists(filename,query,url)
+    
+    return telco_churn
+
