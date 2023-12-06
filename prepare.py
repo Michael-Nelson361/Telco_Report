@@ -173,3 +173,60 @@ def drop_cols(df,cols=[],extras=False,degree=6):
         
     return df
     
+def drop_cols(df,cols=[],extras=False,degree=6):
+    '''
+    Drops columns. If no columns provided, then returns dataframe as is.
+    
+    Arguments:
+    df: Required. DataFrame with columns to be dropped.
+    cols: List, default is empty. If provided a list, then will drop the columns.
+    extras: Default is False. If True, will run drop_extras function with provided degree.
+        drop_extras will use a statistical test to determine a number of categorical columns to be dropped.
+        Runs after other columns are dropped, which may impact the stats test run.
+    degree: Default = 6. Used only in case extras is True.
+    '''
+    df = df.drop(columns=cols,errors='ignore')
+    
+    if extras == True:
+        df = drop_extras(df,degree)
+        
+    return df
+    
+def drop_cols(df,cols=[],extras=False,degree=6):
+    '''
+    Drops columns. If no columns provided, then returns dataframe as is.
+    
+    Arguments:
+    df: Required. DataFrame with columns to be dropped.
+    cols: List, default is empty. If provided a list, then will drop the columns.
+    extras: Default is False. If True, will run drop_extras function with provided degree.
+        drop_extras will use a statistical test to determine a number of categorical columns to be dropped.
+        Runs after other columns are dropped, which may impact the stats test run.
+    degree: Default = 6. Used only in case extras is True.
+    '''
+    df = df.drop(columns=cols,errors='ignore')
+    
+    if extras == True:
+        df = drop_extras(df,degree)
+        
+    return df
+    
+def drop_cols(df,cols=[],extras=False,degree=6):
+    '''
+    Drops columns. If no columns provided, then returns dataframe as is.
+    
+    Arguments:
+    df: Required. DataFrame with columns to be dropped.
+    cols: List, default is empty. If provided a list, then will drop the columns.
+    extras: Default is False. If True, will run drop_extras function with provided degree.
+        drop_extras will use a statistical test to determine a number of categorical columns to be dropped.
+        Runs after other columns are dropped, which may impact the stats test run.
+    degree: Default = 6. Used only in case extras is True.
+    '''
+    df = df.drop(columns=cols,errors='ignore')
+    
+    if extras == True:
+        df = drop_extras(df,degree)
+        
+    return df
+    
